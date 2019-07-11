@@ -1,6 +1,6 @@
 # Discrete Object Generation with Reversible Inductive Construction
 
-![Reversible Inductive Construction](aux_data/method_figure.png)
+<img src="aux_data/method_figure.png" width="800">
 
 This repository contains code and pre-trained models for the generative modeling framework described in (https://arxiv.org/abs/blahblah).
 
