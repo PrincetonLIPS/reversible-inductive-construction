@@ -1,0 +1,80 @@
+diff --git a/Code/Geometry/point.cpp b/Code/Geometry/point.cpp
+index 2903af44..22b04765 100644
+--- a/Code/Geometry/point.cpp
++++ b/Code/Geometry/point.cpp
+@@ -12,6 +12,9 @@
+ //#include <Numerics/Vector.h>
+ 
+ namespace RDGeom {
++
++Point3D::~Point3D() {}
++
+ double computeSignedDihedralAngle(const Point3D& pt1, const Point3D& pt2,
+                                   const Point3D& pt3, const Point3D& pt4) {
+   Point3D begEndVec = pt3 - pt2;
+diff --git a/Code/Geometry/point.h b/Code/Geometry/point.h
+index 34d22704..58336770 100644
+--- a/Code/Geometry/point.h
++++ b/Code/Geometry/point.h
+@@ -50,7 +50,7 @@ class RDKIT_RDGEOMETRYLIB_EXPORT Point3D : public Point {
+   Point3D() : x(0.0), y(0.0), z(0.0){};
+   Point3D(double xv, double yv, double zv) : x(xv), y(yv), z(zv){};
+ 
+-  ~Point3D(){};
++  virtual ~Point3D();
+ 
+   Point3D(const Point3D &other)
+       : Point(other), x(other.x), y(other.y), z(other.z) {}
+diff --git a/Code/cmake/Modules/RDKitUtils.cmake b/Code/cmake/Modules/RDKitUtils.cmake
+index 97925982..362a5416 100644
+--- a/Code/cmake/Modules/RDKitUtils.cmake
++++ b/Code/cmake/Modules/RDKitUtils.cmake
+@@ -251,8 +251,9 @@ function(createExportTestHeaders)
+   endforeach()
+   list(REMOVE_DUPLICATES exportLibs)
+   list(SORT exportLibs)
+-  set(exportPath "Code/RDGeneral/export.h")
+-  file(WRITE "${CMAKE_BINARY_DIR}/${exportPath}"
++  set(exportPath "RDGeneral/export.h")
++  set(exportFullPath "${CMAKE_CURRENT_BINARY_DIR}/${exportPath}")
++  file(WRITE "${exportFullPath}"
+     "// auto-generated __declspec definition header\n"
+     "#pragma once\n"
+     "#ifndef SWIG\n"
+@@ -263,13 +264,15 @@ function(createExportTestHeaders)
+     "\n"
+     "#include <boost/config.hpp>\n"
+     "#endif\n")
+-  set(testPath "Code/RDGeneral/test.h")
+-  file(WRITE "${CMAKE_BINARY_DIR}/${testPath}"
++
++  set(testPath "RDGeneral/test.h")
++  set(testFullPath "${CMAKE_CURRENT_BINARY_DIR}/${testPath}")
++  file(WRITE "${testFullPath}"
+     "// auto-generated header to be imported in all cpp tests\n"
+     "#pragma once\n")
+   foreach(exportLib ${exportLibs})
+     string(TOUPPER "${exportLib}" exportLib)
+-    file(APPEND "${CMAKE_BINARY_DIR}/${exportPath}"
++    file(APPEND "${exportFullPath}"
+       "\n"
+       "// RDKIT_${exportLib}_EXPORT definitions\n"
+       "#if defined(BOOST_HAS_DECLSPEC) && defined(RDKIT_DYN_LINK) && !defined(SWIG)\n"
+@@ -283,14 +286,14 @@ function(createExportTestHeaders)
+       "#define RDKIT_${exportLib}_EXPORT\n"
+       "#endif\n"
+       "// RDKIT_${exportLib}_EXPORT end definitions\n")
+-    file(APPEND "${CMAKE_BINARY_DIR}/${testPath}"
++    file(APPEND "${testFullPath}"
+       "\n"
+       "#ifdef RDKIT_${exportLib}_BUILD\n"
+       "#undef RDKIT_${exportLib}_BUILD\n"
+       "#endif\n")
+   endforeach()
+-  overwriteIfChanged("${CMAKE_BINARY_DIR}/${exportPath}" "${CMAKE_SOURCE_DIR}/${exportPath}")
+-  overwriteIfChanged("${CMAKE_BINARY_DIR}/${testPath}" "${CMAKE_SOURCE_DIR}/${testPath}")
++  overwriteIfChanged("${CMAKE_CURRENT_BINARY_DIR}/${exportPath}" "${CMAKE_CURRENT_SOURCE_DIR}/${exportPath}")
++  overwriteIfChanged("${CMAKE_CURRENT_BINARY_DIR}/${testPath}" "${CMAKE_CURRENT_SOURCE_DIR}/${testPath}")
+ endfunction(createExportTestHeaders)
+ 
+ function(patchCoordGenMaeExportHeaders keyword path)
