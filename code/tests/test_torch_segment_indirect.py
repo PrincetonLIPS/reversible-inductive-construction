@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from induc_gen.torch_ext import segment_indirect
+from genric.torch_ext import segment_indirect
 
 
 def _scopes_from_lengths(arr):

@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-from induc_gen.torch_ext import index
+from genric.torch_ext import index
 
 
 def _scopes_from_lengths(arr):

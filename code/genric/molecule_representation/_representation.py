@@ -7,7 +7,7 @@ from .. import Chem, chemutils
 from ..vocabulary import AtomTuple
 
 try:
-    from ..induc_gen_extensions import molecule_representation as mr_native
+    from ..genric_extensions import molecule_representation as mr_native
 except ImportError:
     from . import _implementation_python as mr_native
 

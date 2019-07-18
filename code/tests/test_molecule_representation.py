@@ -5,13 +5,13 @@ import pytest
 import torch
 import numpy as np
 
-from induc_gen import molecule_representation as mr
-from induc_gen import molecule_edit as me
+from genric import molecule_representation as mr
+from genric import molecule_edit as me
 
-from induc_gen.molecule_representation import _implementation_python as imp_py
+from genric.molecule_representation import _implementation_python as imp_py
 
 try:
-    from induc_gen.induc_gen_extensions import molecule_representation as imp_c
+    from genric.genric_extensions import molecule_representation as imp_c
 except ImportError:
     imp_c = None
 

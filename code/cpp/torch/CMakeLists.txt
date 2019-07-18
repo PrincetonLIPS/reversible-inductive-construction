@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(induc_gen_torch LANGUAGES CXX CUDA)
+project(genric_torch LANGUAGES CXX CUDA)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CUDA_STANDARD 11)
 

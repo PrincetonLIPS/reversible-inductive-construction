@@ -9,14 +9,14 @@ namespace py = pybind11;
 using Atom = RDKit::Atom;
 using Bond = RDKit::Bond;
 
-bool induc_gen::BondIsInRing(const Bond *bond) {
+bool genric::BondIsInRing(const Bond *bond) {
     if (!bond->getOwningMol().getRingInfo()->isInitialized()) {
         RDKit::MolOps::findSSSR(bond->getOwningMol());
     }
     return bond->getOwningMol().getRingInfo()->numBondRings(bond->getIdx()) != 0;
 }
 
-void induc_gen::register_bond(pybind11::module &m) {
+void genric::register_bond(pybind11::module &m) {
     py::enum_<RDKit::Bond::BondType>(m, "BondType")
         .value("UNSPECIFIED", Bond::BondType::UNSPECIFIED)
         .value("SINGLE", Bond::BondType::SINGLE)

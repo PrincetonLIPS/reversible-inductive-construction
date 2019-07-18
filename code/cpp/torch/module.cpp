@@ -24,12 +24,12 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     m.def("segment_logsumexp_backward", &segment_logsumexp_backward, py::arg("grad_output"),
           py::arg("values"), py::arg("logsumexp"), py::arg("lengths"));
 
-    m.def("repeat_interleave_out", &induc_gen::repeat_interleave_out,
+    m.def("repeat_interleave_out", &genric::repeat_interleave_out,
           py::arg("out"), py::arg("self"), py::arg("repeats_or_scope"), py::arg("dim") = py::none());
 
-    m.def("repeat_interleave_out_index", &induc_gen::repeat_interleave_out_index,
+    m.def("repeat_interleave_out_index", &genric::repeat_interleave_out_index,
           py::arg("repeats"), py::arg("out"));
 
-    m.def("repeat_interleave_out_shape", &induc_gen::repeat_interleave_out_shape,
+    m.def("repeat_interleave_out_shape", &genric::repeat_interleave_out_shape,
           py::arg("values"), py::arg("repeats_or_scope"), py::arg("out_length"), py::arg("dim") = py::none());
 }

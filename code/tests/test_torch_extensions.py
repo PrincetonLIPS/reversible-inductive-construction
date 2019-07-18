@@ -4,7 +4,7 @@ import numpy as np
 
 from scipy.special import logsumexp
 
-from induc_gen.torch_ext import _repeat_interleave, segment_ops
+from genric.torch_ext import _repeat_interleave, segment_ops
 
 
 def test_repeat_python():

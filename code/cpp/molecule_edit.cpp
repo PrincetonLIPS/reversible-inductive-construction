@@ -41,7 +41,7 @@ std::shared_ptr<RDKit::RWMol> copy_edit_mol(RDKit::ROMol &mol) {
 } // namespace
 
 
-void induc_gen::register_molecule_edit(py::module &m) {
+void genric::register_molecule_edit(py::module &m) {
     m.doc() = "Helper functions for molecule edit functionality.";
     m.def("copy_edit_mol", &copy_edit_mol, py::call_guard<py::gil_scoped_release>());
 }

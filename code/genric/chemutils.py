@@ -7,7 +7,7 @@ MAX_NCAND = 2000
 
 
 try:
-    from .induc_gen_extensions.molecule_edit import copy_edit_mol
+    from .genric_extensions.molecule_edit import copy_edit_mol
 except ImportError:
     def copy_edit_mol(mol):
         new_mol = Chem.RWMol(Chem.MolFromSmiles(''))

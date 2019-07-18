@@ -1,4 +1,4 @@
-from induc_gen import vocabulary, molecule_edit as me
+from genric import vocabulary, molecule_edit as me
 
 
 test_smiles = [

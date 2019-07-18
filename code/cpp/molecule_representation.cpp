@@ -161,7 +161,7 @@ template <typename T> void bond_features(T *data, RDKit::Bond const &bond) {
     bond_type_feature(data + offset, bond.getBondType());
     offset += 4;
 
-    data[offset] = induc_gen::BondIsInRing(&bond);
+    data[offset] = genric::BondIsInRing(&bond);
     offset += 1;
 
     data[offset + std::min(static_cast<int>(bond.getStereo()), 5)] = 1;
@@ -540,7 +540,7 @@ void fill_bond_incidence_list_segment(py::buffer scopes, py::buffer index,
 
 } // namespace
 
-namespace induc_gen {
+namespace genric {
 
 void register_molecule_representation(py::module &m) {
     m.doc() = "Helpers for computing molecule representations";
@@ -585,4 +585,4 @@ void register_molecule_representation(py::module &m) {
     m.def("fill_bond_incidence_list_segment", &fill_bond_incidence_list_segment, py::arg("scopes"),
           py::arg("index"), py::arg("mol"));
 }
-} // namespace induc_gen
+} // namespace genric

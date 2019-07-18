@@ -34,7 +34,7 @@ class CMakeBuild(BuildExtension):
         try:
             out = subprocess.check_output(["cmake", "--version"])
         except OSError:
-            raise RuntimeError("CMake must be installed to build induc_gen.")
+            raise RuntimeError("CMake must be installed to build genric.")
         super(CMakeBuild, self).run()
 
     def build_extension(self, ext):
@@ -66,8 +66,8 @@ class CMakeBuild(BuildExtension):
 
 
 extensions = [
-    CMakeExtension("induc_gen.induc_gen_extensions", download_and_patch_rdkit),
-    CMakeExtension("induc_gen.torch_extensions", source_dir="cpp/torch/"),
+    CMakeExtension("genric.genric_extensions", download_and_patch_rdkit),
+    CMakeExtension("genric.torch_extensions", source_dir="cpp/torch/"),
 ]
 
 setup(

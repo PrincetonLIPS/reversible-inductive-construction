@@ -1,4 +1,4 @@
-from induc_gen.model import summary
+from genric.model import summary
 import numpy as np
 import torch
 import pytest

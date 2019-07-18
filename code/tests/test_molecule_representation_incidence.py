@@ -1,8 +1,8 @@
 import pytest
 import numpy as np
 
-from induc_gen import molecule_representation as mr
-from induc_gen import molecule_edit as me
+from genric import molecule_representation as mr
+from genric import molecule_edit as me
 
 
 def mol_incidence_reference(mol):

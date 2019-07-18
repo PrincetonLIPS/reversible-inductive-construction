@@ -42,7 +42,7 @@ static void compute_cuda_scope(int64_t *scope_ptr, int64_t *result_ptr, int64_t 
     compute_cuda_kernel_scope<<<grid, block, 0, stream>>>(scope_ptr, result_ptr, size);
 }
 
-at::Tensor &induc_gen::repeat_interleave_gpu_out(const at::Tensor& repeats, at::Tensor &out) {
+at::Tensor &genric::repeat_interleave_gpu_out(const at::Tensor& repeats, at::Tensor &out) {
     AT_CHECK(out.is_contiguous(), "Output array must be contiguous.");
 
     auto repeats_ = repeats.contiguous();
@@ -52,7 +52,7 @@ at::Tensor &induc_gen::repeat_interleave_gpu_out(const at::Tensor& repeats, at::
     return out;
 }
 
-at::Tensor &induc_gen::repeat_interleave_gpu_out_scope(const at::Tensor& scope, at::Tensor &out) {
+at::Tensor &genric::repeat_interleave_gpu_out_scope(const at::Tensor& scope, at::Tensor &out) {
     AT_CHECK(out.is_contiguous(), "Output array must be contiguous");
 
     auto scope_ = scope.contiguous();

@@ -2,7 +2,7 @@ import torch
 import numpy as np
 
 import pytest
-from induc_gen.torch_ext import segment_pool as sp
+from genric.torch_ext import segment_pool as sp
 
 
 def _scopes_from_lengths(arr):

@@ -3,8 +3,8 @@ import numpy as np
 import pickle as pkl
 from copy import deepcopy
 import networkx as nx
-from induc_gen.laman import laman_edit as le
-from induc_gen.laman import data_gen as dg
+from genric.laman import laman_edit as le
+from genric.laman import data_gen as dg
 
 from IPython import embed
 

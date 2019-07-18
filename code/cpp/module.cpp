@@ -15,19 +15,19 @@ using ROMol = RDKit::ROMol;
 using RWMol = RDKit::RWMol;
 
 
-PYBIND11_MODULE(induc_gen_extensions, m) {
+PYBIND11_MODULE(genric_extensions, m) {
     m.doc() = "RDKit bindings and extensions for induc-gen";
 
-    induc_gen::register_atom(m);
-    induc_gen::register_bond(m);
-    induc_gen::register_mol(m);
-    induc_gen::register_molops(m);
-    induc_gen::register_utilities(m);
+    genric::register_atom(m);
+    genric::register_bond(m);
+    genric::register_mol(m);
+    genric::register_molops(m);
+    genric::register_utilities(m);
 
     auto m_rep = m.def_submodule("molecule_representation");
-    induc_gen::register_molecule_representation(m_rep);
+    genric::register_molecule_representation(m_rep);
 
     auto m_edit = m.def_submodule("molecule_edit");
-    induc_gen::register_molecule_edit(m_edit);
+    genric::register_molecule_edit(m_edit);
 
 }

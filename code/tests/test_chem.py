@@ -1,4 +1,4 @@
-from induc_gen import Chem
+from genric import Chem
 from rdkit import Chem as RDChem
 import pytest
 
@@ -60,7 +60,7 @@ def test_smiles_pickle():
 
 
 def test_get_leaves():
-    from induc_gen import molecule_edit as me
+    from genric import molecule_edit as me
     smiles = 'O=C(Cn1nc(C(=O)[O-])c2ccccc2c1=O)Nc1ccc2c(c1)C(=O)c1ccccc1C2=O'
     mol = Chem.MolFromSmiles(smiles)
 

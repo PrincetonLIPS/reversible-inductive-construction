@@ -6,7 +6,7 @@ namespace RDKit {
     class Bond;
 }
 
-namespace induc_gen {
+namespace genric {
     void register_atom(pybind11::module &m);
     void register_bond(pybind11::module &m);
     void register_mol(pybind11::module &m);

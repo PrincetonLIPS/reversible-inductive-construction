@@ -72,7 +72,7 @@ RDKit::MolOps::SanitizeFlags sanitizeMol(RWMol &mol, RDKit::MolOps::SanitizeFlag
 }
 } // namespace
 
-void induc_gen::register_molops(py::module &m) {
+void genric::register_molops(py::module &m) {
     py::enum_<RDKit::MolOps::SanitizeFlags>(m, "SanitizeFlags", py::arithmetic())
         .value("SANITIZE_NONE", RDKit::MolOps::SANITIZE_NONE)
         .value("SANITIZE_CLEANUP", RDKit::MolOps::SANITIZE_CLEANUP)

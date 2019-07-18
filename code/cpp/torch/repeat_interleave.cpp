@@ -30,7 +30,7 @@ void compute_cpu_scope(const int64_t *scope_ptr, int64_t *result_ptr, int64_t si
 
 } // namespace
 
-at::Tensor &induc_gen::repeat_interleave_cpu_out(const at::Tensor &repeats, at::Tensor &out) {
+at::Tensor &genric::repeat_interleave_cpu_out(const at::Tensor &repeats, at::Tensor &out) {
     AT_CHECK(out.is_contiguous(), "Output array must be contiguous.");
 
     auto repeats_ = repeats.contiguous();
@@ -40,7 +40,7 @@ at::Tensor &induc_gen::repeat_interleave_cpu_out(const at::Tensor &repeats, at::
     return out;
 }
 
-at::Tensor &induc_gen::repeat_interleave_cpu_out_scope(const at::Tensor &scope, at::Tensor &out) {
+at::Tensor &genric::repeat_interleave_cpu_out_scope(const at::Tensor &scope, at::Tensor &out) {
     AT_CHECK(out.is_contiguous(), "Output array must be contiguous.");
 
     auto scope_ = scope.contiguous();
@@ -48,22 +48,22 @@ at::Tensor &induc_gen::repeat_interleave_cpu_out_scope(const at::Tensor &scope, 
     return out;
 }
 
-at::Tensor &induc_gen::repeat_interleave_out_index_scope(const at::Tensor &scope,
+at::Tensor &genric::repeat_interleave_out_index_scope(const at::Tensor &scope,
                                                          at::Tensor &out) {
     if (scope.device().is_cuda()) {
         AT_CHECK(out.device().is_cuda(), "Output tensor must be CUDA tensor when scope is.");
-        return induc_gen::repeat_interleave_gpu_out_scope(scope, out);
+        return genric::repeat_interleave_gpu_out_scope(scope, out);
     } else {
-        return induc_gen::repeat_interleave_cpu_out_scope(scope, out);
+        return genric::repeat_interleave_cpu_out_scope(scope, out);
     }
 }
 
-at::Tensor &induc_gen::repeat_interleave_out_index(const at::Tensor &repeats, at::Tensor &out) {
+at::Tensor &genric::repeat_interleave_out_index(const at::Tensor &repeats, at::Tensor &out) {
     if (repeats.device().is_cuda()) {
         AT_CHECK(out.device().is_cuda(), "Output tensor must be CUDA tensor when repeats is.");
-        return induc_gen::repeat_interleave_gpu_out(repeats, out);
+        return genric::repeat_interleave_gpu_out(repeats, out);
     } else {
-        return induc_gen::repeat_interleave_cpu_out(repeats, out);
+        return genric::repeat_interleave_cpu_out(repeats, out);
     }
 }
 
@@ -84,16 +84,16 @@ static at::Tensor make_repeat_index(at::Tensor repeats, int64_t input_size_dim, 
     at::Tensor index = at::empty({out_length}, repeats.options());
 
     if (repeats.dim() == 2) {
-        induc_gen::repeat_interleave_out_index_scope(repeats, index);
+        genric::repeat_interleave_out_index_scope(repeats, index);
     }
     else {
-        induc_gen::repeat_interleave_out_index(repeats, index);
+        genric::repeat_interleave_out_index(repeats, index);
     }
 
     return index;
 }
 
-at::Tensor &induc_gen::repeat_interleave_out(at::Tensor &out, const at::Tensor &self,
+at::Tensor &genric::repeat_interleave_out(at::Tensor &out, const at::Tensor &self,
                                              const at::Tensor &repeats_or_scope,
                                              c10::optional<int64_t> dim) {
     at::Tensor input = self;
@@ -106,7 +106,7 @@ at::Tensor &induc_gen::repeat_interleave_out(at::Tensor &out, const at::Tensor &
     return at::index_select_out(out, input, dim.value(), index);
 }
 
-at::Tensor induc_gen::repeat_interleave_out_shape(const at::Tensor &self,
+at::Tensor genric::repeat_interleave_out_shape(const at::Tensor &self,
                                                   const at::Tensor &repeats_or_scope,
                                                   int64_t out_length, c10::optional<int64_t> dim) {
     at::Tensor input = self;

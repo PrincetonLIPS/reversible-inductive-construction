@@ -1,6 +1,6 @@
 import pytest
-from induc_gen.laman import representation
-from induc_gen.laman.representation import _representation
+from genric.laman import representation
+from genric.laman.representation import _representation
 from functools import lru_cache
 
 

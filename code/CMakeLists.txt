@@ -3,7 +3,7 @@ cmake_policy(SET CMP0074 NEW)
 cmake_policy(SET CMP0063 NEW)
 set(CMAKE_POLICY_DEFAULT_CMP0063 NEW)
 
-project(induc_gen)
+project(genric)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -22,7 +22,7 @@ add_subdirectory(lib/rdkit EXCLUDE_FROM_ALL)
 
 set(SOURCES_WRAP cpp/wrap/atom.cpp cpp/wrap/bond.cpp cpp/wrap/mol.cpp cpp/wrap/molops.cpp cpp/wrap/utilities.cpp)
 set(SOURCES cpp/module.cpp cpp/molecule_representation.cpp cpp/molecule_edit.cpp ${SOURCES_WRAP})
-pybind11_add_module(induc_gen_extensions MODULE ${SOURCES})
+pybind11_add_module(genric_extensions MODULE ${SOURCES})
 
 set(rdkit_libraries RDGeometryLib GraphMol SmilesParse ChemTransforms)
 
@@ -31,5 +31,5 @@ if(NOT MSVC)
     list(TRANSFORM rdkit_libraries APPEND _static)
 endif()
 
-target_link_libraries(induc_gen_extensions PRIVATE rdkit_base ${rdkit_libraries})
+target_link_libraries(genric_extensions PRIVATE rdkit_base ${rdkit_libraries})
 

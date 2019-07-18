@@ -3,7 +3,7 @@ import numpy as np
 import networkx as nx
 from matplotlib import pyplot as plt
 
-from induc_gen.laman import data_gen
+from genric.laman import data_gen
 
 from IPython import embed
 

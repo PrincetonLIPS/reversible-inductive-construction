@@ -13,7 +13,7 @@ void disable_log(std::string spec) { boost::logging::disable_logs(spec); }
 
 } // namespace
 
-void induc_gen::register_utilities(py::module &m) {
+void genric::register_utilities(py::module &m) {
     static py::exception<Invar::Invariant> invariant_exc(m, "RDInvariantError");
     py::register_exception_translator([](std::exception_ptr p) {
         try {

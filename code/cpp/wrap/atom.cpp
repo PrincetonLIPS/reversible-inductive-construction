@@ -52,7 +52,7 @@ bool AtomIsInRingSize(const Atom *atom, int size) {
 
 } // namespace
 
-void induc_gen::register_atom(py::module &m) {
+void genric::register_atom(py::module &m) {
     py::enum_<RDKit::Atom::ChiralType>(m, "ChiralType")
         .value("CHI_UNSPECIFIED", Atom::CHI_UNSPECIFIED)
         .value("CHI_TETRAHEDRAL_CW", Atom::CHI_TETRAHEDRAL_CW)

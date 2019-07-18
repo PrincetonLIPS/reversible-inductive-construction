@@ -1,4 +1,4 @@
-from induc_gen import molecule_edit as me, chemutils, data_utils, action
+from genric import molecule_edit as me, chemutils, data_utils, action
 from rdkit import Chem
 from rdkit.Chem import Draw
 import numpy as np

@@ -1,9 +1,9 @@
 import numpy as np
 import pytest
 
-from induc_gen import molecule_edit as me, vocabulary
-from induc_gen.data_utils import get_vocab
-from induc_gen.molecule_models import action_representation as ar
+from genric import molecule_edit as me, vocabulary
+from genric.data_utils import get_vocab
+from genric.molecule_models import action_representation as ar
 
 
 def action_mol_to_integer(act, mol, encoder):

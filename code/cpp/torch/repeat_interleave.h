@@ -2,7 +2,7 @@
 
 #include <ATen/ATen.h>
 
-namespace induc_gen {
+namespace genric {
 
 at::Tensor &repeat_interleave_cpu_out(const at::Tensor &repeats, at::Tensor &out);
 at::Tensor &repeat_interleave_gpu_out(const at::Tensor &repeats, at::Tensor &out);
@@ -17,4 +17,4 @@ at::Tensor &repeat_interleave_cpu_out_scope(const at::Tensor &scope, at::Tensor 
 at::Tensor &repeat_interleave_gpu_out_scope(const at::Tensor &scope, at::Tensor &out);
 at::Tensor &repeat_interleave_out_index_scope(const at::Tensor &scope, at::Tensor &out);
 
-} // namespace induc_gen
+} // namespace genric

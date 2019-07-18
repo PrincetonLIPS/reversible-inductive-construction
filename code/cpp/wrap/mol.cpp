@@ -64,7 +64,7 @@ struct AtomFunc {
 typedef ReadonlyIterSeq<AtomFunc::Iter, AtomFunc::Len> AtomIterSeq;
 } // namespace
 
-void induc_gen::register_mol(py::module &m) {
+void genric::register_mol(py::module &m) {
     BondIterSeq::add_binding(m, "BondIterSeq");
     AtomIterSeq::add_binding(m, "AtomIterSeq");
 

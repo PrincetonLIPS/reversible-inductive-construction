@@ -16,34 +16,34 @@ python setup.py build_ext --inplace
 
 ## Molecule Models
 
-The main code for the molecule models can be found under the `induc_gen.molecule_models` module.
+The main code for the molecule models can be found under the `genric.molecule_models` module.
 A simple molecule model can be trained by using:
 ```
-python -m induc_gen.molecule_models.train_joint
+python -m genric.molecule_models.train_joint
 ```
 
 In general, we strongly recommend using native extensions to significantly accelerate the processing.
 We note that the corruption process can be fairly CPU intensive, and so we recommend using a large
 number of CPU cores and workers. Alternatively, it is possible to pre-generate corruption datasets
-by using the `induc_gen.corruption_dataset` module.
+by using the `genric.corruption_dataset` module.
 
-To run the trained models, the `induc_gen.deploy.chain` module can be used. This module will
+To run the trained models, the `genric.deploy.chain` module can be used. This module will
 sample a single chain and save the resulting chain at the specified location.
 
 ## Laman Models
 
-The main code for the laman models can be found under the `induc_gen.laman` module.
+The main code for the laman models can be found under the `genric.laman` module.
 A simple model can be trained by using:
 ```
-python -m induc_gen.laman.train_joint
+python -m genric.laman.train_joint
 ```
 
 Note that the training can be quite gpu-memory intensive at large batch sizes.
 The provided dataset is only a sample (and only has 1000 observations). It is
 possible to generate new datasets by running the following script:
 ```
-python -m induc_gen.laman.data_gen
+python -m genric.laman.data_gen
 ```
 Please see the script for different configuration options.
 
-To run trained models, the `induc_gen.laman.deploy` module can be used.
+To run trained models, the `genric.laman.deploy` module can be used.
