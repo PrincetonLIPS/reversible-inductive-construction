@@ -1,3 +1,5 @@
+# Some functions below adapted from https://github.com/wengong-jin/icml18-jtnn.
+
 import logging
 
 from . import Chem
