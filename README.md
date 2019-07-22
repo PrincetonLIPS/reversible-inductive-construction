@@ -2,7 +2,7 @@
 
 <img src="aux_data/method_figure.png" width="800">
 
-This repository contains code and pre-trained models for the generative modeling framework described in (https://arxiv.org/abs/blahblah).
+This repository contains code and pre-trained models for the generative modeling framework described in (https://arxiv.org/abs/1907.08268).
 
 ## Code
 Please see the README in `code/` for details.
